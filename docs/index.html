@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>TwinCAT AI Agent</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-dim": "#d2d9f4",
+                        "on-secondary-fixed-variant": "#17448e",
+                        "inverse-surface": "#283044",
+                        "tertiary-fixed-dim": "#b7c8e1",
+                        "surface-container": "#eaedff",
+                        "on-tertiary": "#ffffff",
+                        "surface": "#faf8ff",
+                        "outline-variant": "#e5bdba",
+                        "on-secondary": "#ffffff",
+                        "outline": "#916f6d",
+                        "on-secondary-fixed": "#001a43",
+                        "on-error-container": "#93000a",
+                        "on-background": "#131b2e",
+                        "surface-variant": "#dae2fd",
+                        "on-primary-container": "#ffe1df",
+                        "tertiary-fixed": "#d3e4fe",
+                        "surface-container-high": "#e2e7ff",
+                        "secondary-fixed": "#d9e2ff",
+                        "secondary": "#355ca7",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container-low": "#f2f3ff",
+                        "on-tertiary-fixed": "#0b1c30",
+                        "inverse-primary": "#ffb3af",
+                        "surface-container-highest": "#dae2fd",
+                        "on-surface-variant": "#5c3f3e",
+                        "secondary-fixed-dim": "#afc6ff",
+                        "on-primary-fixed-variant": "#930018",
+                        "error-container": "#ffdad6",
+                        "background": "#faf8ff",
+                        "surface-tint": "#bf0023",
+                        "primary-fixed-dim": "#ffb3af",
+                        "on-surface": "#131b2e",
+                        "tertiary-container": "#596980",
+                        "secondary-container": "#88adfe",
+                        "on-primary": "#ffffff",
+                        "on-tertiary-container": "#dbe9ff",
+                        "surface-bright": "#faf8ff",
+                        "on-error": "#ffffff",
+                        "on-secondary-container": "#0d3e88",
+                        "on-tertiary-fixed-variant": "#38485d",
+                        "inverse-on-surface": "#eef0ff",
+                        "primary-container": "#ce142b",
+                        "primary": "#a4001c",
+                        "error": "#ba1a1a",
+                        "primary-fixed": "#ffdad7",
+                        "tertiary": "#415167",
+                        "on-primary-fixed": "#410005"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "sm": "8px",
+                        "gutter": "16px",
+                        "container-margin": "24px",
+                        "xs": "4px",
+                        "md": "16px",
+                        "lg": "24px",
+                        "xl": "32px",
+                        "base": "4px"
+                    },
+                    "fontFamily": {
+                        "display": ["Inter"],
+                        "h3": ["Inter"],
+                        "label-md": ["Inter"],
+                        "code": ["monospace"],
+                        "h2": ["Inter"],
+                        "body-md": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "h1": ["Inter"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "display": ["48px", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "h3": ["20px", { "lineHeight": "1.4", "fontWeight": "600" }],
+                        "label-md": ["12px", { "lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "code": ["13px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "h2": ["24px", { "lineHeight": "1.3", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                        "body-sm": ["14px", { "lineHeight": "1.45", "fontWeight": "400" }],
+                        "h1": ["32px", { "lineHeight": "1.25", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "1.55", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body
+    class="bg-background text-on-background font-body-md text-body-md antialiased selection:bg-primary-container selection:text-on-primary">
+    <!-- TopNavBar -->
+    <nav
+        class="bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 sticky top-0 z-50 w-full border-b-2 border-[#CE142B]">
+        <div class="flex justify-between items-center w-full px-8 h-16 max-w-[1920px] mx-auto">
+            <div class="text-xl font-black tracking-tighter text-[#CE142B] dark:text-[#CE142B]" style="">TwinCAT AI
+                Agent</div>
+            <div
+                class="hidden md:flex items-center gap-gutter font-sans tracking-tight antialiased text-sm font-semibold">
+                <!-- <a class="text-xl font-black tracking-tighter text-[#CE142B] dark:text-[#CE142B]" href="#features" style="">Features</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-red-700 dark:hover:text-red-500 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors duration-200 active:opacity-80 transition-opacity" href="#how-it-works" style="">How it Works</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-red-700 dark:hover:text-red-500 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors duration-200 active:opacity-80 transition-opacity" href="#security" style="">Security</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-red-700 dark:hover:text-red-500 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors duration-200 active:opacity-80 transition-opacity" href="#safety" style="">Safety</a> -->
+            </div>
+            <div>
+                <a class="text-on-primary px-md py-sm rounded font-label-md text-label-md hover:opacity-90 focus:ring-2 focus:ring-secondary focus:outline-none transition-opacity bg-[#CE142B]"
+                    href="#download" style="">
+                    Request Download
+                </a>
+            </div>
+        </div>
+    </nav>
+    <!-- Hero Section -->
+    <section
+        class="py-24 px-container-margin max-w-[1920px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-xl items-center">
+        <div class="flex flex-col gap-lg">
+            <h1 class="font-display text-display text-on-background" style="">Bring AI coding agents into TwinCAT 3
+                engineering</h1>
+            <p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl" style="">Use Claude, GitHub Copilot
+                and other coding agents to interact with existing Beckhoff TwinCAT 3 projects through a structured
+                engineering interface.</p>
+            <div class="flex flex-col sm:flex-row gap-md items-start sm:items-center mt-sm">
+                <a class="text-on-primary px-lg py-md rounded font-label-md text-label-md hover:opacity-90 focus:ring-2 focus:ring-secondary focus:outline-none transition-opacity inline-flex items-center gap-sm bg-[#CE142B]"
+                    href="#download" style="">
+                    Request Download
+                    <span class="material-symbols-outlined"
+                        style='font-variation-settings: "FILL" 0;'>arrow_forward</span>
+                </a>
+                <!-- <a class="bg-transparent border border-outline text-on-background px-lg py-md rounded font-label-md text-label-md hover:bg-surface-dim focus:ring-2 focus:ring-secondary focus:outline-none transition-colors"
+                    href="#demo" style="">
+                    Book a demo
+                </a> -->
+            </div>
+            <p class="font-body-sm text-body-sm text-on-surface-variant" style="">Request access to the preview version.
+                We will contact you with download details.</p>
+        </div>
+        <div class="relative bg-surface border border-outline-variant p-md rounded shadow-sm">
+            <!-- Decorative Terminal Window -->
+            <div class="bg-inverse-surface rounded p-md overflow-hidden shadow-inner">
+                <div class="flex gap-xs mb-sm">
+                    <div class="w-3 h-3 rounded-full bg-error"></div>
+                    <div class="w-3 h-3 rounded-full bg-secondary"></div>
+                    <div class="w-3 h-3 rounded-full bg-surface-variant"></div>
+                </div>
+                <pre class="font-code text-code text-on-primary-container overflow-x-auto">&gt; TwinCAT_AI_Bridge --analyze POU_Main
+[INFO] Loading POU_Main.TcPOU...
+[INFO] Identifying logic structures: 1 State Machine, 3 Function Blocks.
+[REASONING] FB_MotorControl requires an updated Interlock signal.
+[SUGGESTION] Add 'bSafetyOK' to the transition logic in line 42.
+[OK] Ready to generate updated Structured Text.</pre>
+            </div>
+        </div>
+    </section>
+    <!-- Problem & Solution Section -->
+    <section class="bg-surface-dim py-xl px-container-margin">
+        <div class="max-w-5xl mx-auto flex flex-col gap-lg text-center">
+            <h2 class="font-h1 text-h1 text-on-background" style="">Generic AI tools do not understand TwinCAT 3 projects
+            </h2>
+            <p class="font-body-lg text-body-lg text-on-surface-variant max-w-3xl mx-auto" style="">Standard LLMs lack
+                context for industrial automation structures. They struggle with POUs, Function Blocks, and the specific
+                syntax of Structured Text within a Beckhoff environment.</p>
+            <div
+                class="text-on-primary p-lg rounded mt-md mx-auto max-w-2xl border border-primary-container shadow-[0px_4px_0px_rgba(0,0,0,0.1)] bg-[#CE142B]">
+                <h3 class="font-h2 text-h2 mb-sm" style="">A structured bridge between coding agents and TwinCAT 3</h3>
+                <p class="font-body-md text-body-md opacity-90" style="">Our MCP server translates complex TwinCAT 3
+                    project files into a semantic structure that modern AI agents can comprehend and safely manipulate.
+                </p>
+            </div>
+        </div>
+    </section>
+    <section class="py-12 px-container-margin bg-white">
+        <div
+            class="max-w-4xl mx-auto border-2 border-dashed border-slate-300 rounded-xl flex flex-col items-center justify-center min-h-[300px] bg-slate-50">
+            <span class="material-symbols-outlined text-slate-400 text-5xl mb-4">play_circle</span>
+            <p class="text-slate-500 font-medium">[Placeholder for agent demonstration GIF]</p>
+            <p class="text-slate-400 text-sm">Inserisci lo spazio per una gif che mostra brevi sequenze di funzionamento
+                dell'agent</p>
+        </div>
+    </section>
+    <!-- Features Bento Grid -->
+    <section class="py-24 px-container-margin max-w-[1920px] mx-auto" id="features">
+        <h2 class="font-h1 text-h1 text-on-background mb-xl text-center" style="">Engineering Capabilities</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter">
+            <div
+                class="bg-surface border border-outline-variant p-lg rounded flex flex-col gap-sm shadow-sm relative overflow-hidden">
+                <div class="h-1 w-full absolute top-0 left-0 bg-[#CE142B]"></div>
+                <span class="material-symbols-outlined text-primary-container text-3xl mb-xs"
+                    style='font-variation-settings: "FILL" 1;'>integration_instructions</span>
+                <h3 class="font-h3 text-h3 text-on-background" style="">Understand existing PLC code</h3>
+                <p class="font-body-sm text-body-sm text-on-surface-variant" style="">Agents analyze existing
+                    architecture to provide context-aware suggestions.</p>
+            </div>
+            <div
+                class="bg-surface border border-outline-variant p-lg rounded flex flex-col gap-sm shadow-sm relative overflow-hidden">
+                <div class="h-1 w-full absolute top-0 left-0 bg-[#CE142B]"></div>
+                <span class="material-symbols-outlined text-primary-container text-3xl mb-xs"
+                    style='font-variation-settings: "FILL" 1;'>block</span>
+                <h3 class="font-h3 text-h3 text-on-background" style="">Generate engineering boilerplate</h3>
+                <p class="font-body-sm text-body-sm text-on-surface-variant" style="">Automate repetitive structure
+                    creation, letting engineers focus on core logic.</p>
+            </div>
+            <div
+                class="bg-surface border border-outline-variant p-lg rounded flex flex-col gap-sm shadow-sm relative overflow-hidden">
+                <div class="h-1 w-full absolute top-0 left-0 bg-[#CE142B]"></div>
+                <span class="material-symbols-outlined text-primary-container text-3xl mb-xs"
+                    style='font-variation-settings: "FILL" 1;'>explore</span>
+                <h3 class="font-h3 text-h3 text-on-background" style="">Navigate TwinCAT 3 projects faster</h3>
+                <p class="font-body-sm text-body-sm text-on-surface-variant" style="">Quickly locate variables,
+                    references, and dependencies across large codebases.</p>
+            </div>
+            <div
+                class="bg-surface border border-outline-variant p-lg rounded flex flex-col gap-sm shadow-sm relative overflow-hidden">
+                <div class="h-1 w-full absolute top-0 left-0 bg-[#CE142B]"></div>
+                <span class="material-symbols-outlined text-primary-container text-3xl mb-xs"
+                    style='font-variation-settings: "FILL" 1;'>history</span>
+                <h3 class="font-h3 text-h3 text-on-background" style="">Support legacy projects</h3>
+                <p class="font-body-sm text-body-sm text-on-surface-variant" style="">Bring modern AI capabilities to
+                    older TwinCAT 3 implementations.</p>
+            </div>
+            <div
+                class="bg-surface border border-outline-variant p-lg rounded flex flex-col gap-sm shadow-sm relative overflow-hidden">
+                <div class="h-1 w-full absolute top-0 left-0 bg-[#CE142B]"></div>
+                <span class="material-symbols-outlined text-primary-container text-3xl mb-xs"
+                    style='font-variation-settings: "FILL" 1;'>rule</span>
+                <h3 class="font-h3 text-h3 text-on-background" style="">Standardize team output</h3>
+                <p class="font-body-sm text-body-sm text-on-surface-variant" style="">Enforce coding guidelines and
+                    naming conventions automatically.</p>
+            </div>
+            <div
+                class="bg-surface border border-outline-variant p-lg rounded flex flex-col gap-sm shadow-sm relative overflow-hidden">
+                <div class="h-1 w-full absolute top-0 left-0 bg-[#CE142B]"></div>
+                <span class="material-symbols-outlined text-primary-container text-3xl mb-xs"
+                    style='font-variation-settings: "FILL" 1;'>settings</span>
+                <h3 class="font-h3 text-h3 text-on-background" style="">Keep engineers in control</h3>
+                <p class="font-body-sm text-body-sm text-on-surface-variant" style="">All AI suggestions require human
+                    review before compilation.</p>
+            </div>
+        </div>
+    </section>
+    <!-- Footer -->
+    <footer class="bg-slate-50 dark:bg-slate-950 border-t border-slate-200 dark:border-slate-800">
+        <div
+            class="flex flex-col md:flex-row justify-between items-center w-full px-8 py-12 max-w-[1920px] mx-auto gap-4">
+            <div class="text-lg font-bold text-slate-900 dark:text-slate-100" style="">TwinCAT AI Agent</div>
+            <div
+                class="font-sans text-xs uppercase tracking-widest text-slate-500 dark:text-slate-400 flex flex-wrap justify-center gap-md">
+                <a class="hover:text-[#CE142B] dark:hover:text-[#CE142B] underline decoration-2 cursor-pointer transition-all text-[#CE142B] font-bold"
+                    href="#" style="">Product Information</a>
+                <a class="hover:text-red-700 dark:hover:text-red-500 underline decoration-2 cursor-pointer transition-all"
+                    href="#" style="">Legal Notes</a>
+                <a class="hover:text-red-700 dark:hover:text-red-500 underline decoration-2 cursor-pointer transition-all"
+                    href="#" style="">Privacy Policy</a>
+                <a class="hover:text-red-700 dark:hover:text-red-500 underline decoration-2 cursor-pointer transition-all"
+                    href="#" style="">Imprint</a>
+            </div>
+            <div class="text-xs text-slate-500" style="">
+                © 2026 Cristian Civera. All rights reserved.
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
