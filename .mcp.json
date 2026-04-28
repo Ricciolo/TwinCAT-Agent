@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "twincat-automation-server": {
+      "command": "cmd.exe",
+      "args": [
+        "/c",
+        "${CLAUDE_PLUGIN_ROOT}/TwinCat.Xae.Mcp.Server.exe"
+      ]
+    }
+  }
+}
