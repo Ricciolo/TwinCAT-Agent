@@ -14,6 +14,27 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
         rel="stylesheet" />
+    <style>
+        /* Page scrollbar */
+        :root {
+            scrollbar-color: #e5bdba #faf8ff;
+            scrollbar-width: thin;
+        }
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-track { background: #faf8ff; }
+        ::-webkit-scrollbar-thumb { background: #e5bdba; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #916f6d; }
+
+        /* Terminal pre scrollbar */
+        pre {
+            scrollbar-color: #5c6680 #283044;
+            scrollbar-width: thin;
+        }
+        pre::-webkit-scrollbar { width: 6px; height: 6px; }
+        pre::-webkit-scrollbar-track { background: #283044; }
+        pre::-webkit-scrollbar-thumb { background: #5c6680; border-radius: 3px; }
+        pre::-webkit-scrollbar-thumb:hover { background: #ce142b; }
+    </style>
     <script id="tailwind-config">
         tailwind.config = {
             darkMode: "class",
@@ -122,16 +143,12 @@
                 Agent</div>
             <div
                 class="hidden md:flex items-center gap-gutter font-sans tracking-tight antialiased text-sm font-semibold">
-                <!-- <a class="text-xl font-black tracking-tighter text-[#CE142B] dark:text-[#CE142B]" href="#features" style="">Features</a>
-<a class="text-slate-600 dark:text-slate-400 hover:text-red-700 dark:hover:text-red-500 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors duration-200 active:opacity-80 transition-opacity" href="#how-it-works" style="">How it Works</a>
-<a class="text-slate-600 dark:text-slate-400 hover:text-red-700 dark:hover:text-red-500 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors duration-200 active:opacity-80 transition-opacity" href="#security" style="">Security</a>
-<a class="text-slate-600 dark:text-slate-400 hover:text-red-700 dark:hover:text-red-500 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors duration-200 active:opacity-80 transition-opacity" href="#safety" style="">Safety</a> -->
+                <a class="text-slate-600 dark:text-slate-400 hover:text-red-700 dark:hover:text-red-500 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors duration-200 active:opacity-80 transition-opacity" href="#how-it-works" style="">How it Works</a>
+                <a class="text-slate-600 dark:text-slate-400 hover:text-red-700 dark:hover:text-red-500 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors duration-200 active:opacity-80 transition-opacity" href="#security" style="">Security</a>
+                <a class="text-slate-600 dark:text-slate-400 hover:text-red-700 dark:hover:text-red-500 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors duration-200 active:opacity-80 transition-opacity" href="#safety" style="">Safety</a>
             </div>
             <div>
-                <a class="text-on-primary px-md py-sm rounded font-label-md text-label-md hover:opacity-90 focus:ring-2 focus:ring-secondary focus:outline-none transition-opacity bg-[#CE142B]"
-                    href="#download" style="">
-                    Request Download
-                </a>
+                <a class="text-on-primary px-md py-sm rounded font-label-md text-label-md hover:opacity-90 focus:ring-2 focus:ring-secondary focus:outline-none transition-opacity bg-[#CE142B]" href="#quick-start" style="">Install Now</a>
             </div>
         </div>
     </nav>
@@ -139,25 +156,21 @@
     <section
         class="py-24 px-container-margin max-w-[1920px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-xl items-center">
         <div class="flex flex-col gap-lg">
-            <h1 class="font-display text-display text-on-background" style="">Bring AI coding agents into TwinCAT 3
+            <h1 class="font-display text-display text-on-background" style="">Bring AI coding agents into TwinCAT
                 engineering</h1>
             <p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl" style="">Use Claude, GitHub Copilot
-                and other coding agents to interact with existing Beckhoff TwinCAT 3 projects through a structured
+                and other coding agents to interact with existing Beckhoff TwinCAT projects through a structured
                 engineering interface.</p>
-            <div class="flex flex-col sm:flex-row gap-md items-start sm:items-center mt-sm">
-                <a class="text-on-primary px-lg py-md rounded font-label-md text-label-md hover:opacity-90 focus:ring-2 focus:ring-secondary focus:outline-none transition-opacity inline-flex items-center gap-sm bg-[#CE142B]"
-                    href="#download" style="">
-                    Request Download
-                    <span class="material-symbols-outlined"
-                        style='font-variation-settings: "FILL" 0;'>arrow_forward</span>
+            <div class="flex flex-col sm:flex-row gap-md items-stretch mt-sm">
+                <a class="text-on-primary px-lg py-md rounded font-label-md text-label-md hover:opacity-90 focus:ring-2 focus:ring-secondary focus:outline-none transition-opacity inline-flex items-center justify-center gap-sm bg-[#CE142B]" href="#quick-start">
+                    Get Started
+                    <span class="material-symbols-outlined text-[18px] leading-none" style='font-variation-settings: "FILL" 0;'>arrow_forward</span>
                 </a>
-                <!-- <a class="bg-transparent border border-outline text-on-background px-lg py-md rounded font-label-md text-label-md hover:bg-surface-dim focus:ring-2 focus:ring-secondary focus:outline-none transition-colors"
-                    href="#demo" style="">
+                <a class="bg-transparent border border-outline text-on-background px-lg py-md rounded font-label-md text-label-md hover:bg-surface-dim focus:ring-2 focus:ring-secondary focus:outline-none transition-colors inline-flex items-center justify-center"
+                    href="#demo">
                     Book a demo
-                </a> -->
+                </a>
             </div>
-            <p class="font-body-sm text-body-sm text-on-surface-variant" style="">Request access to the preview version.
-                We will contact you with download details.</p>
         </div>
         <div class="relative bg-surface border border-outline-variant p-md rounded shadow-sm">
             <!-- Decorative Terminal Window -->
@@ -179,27 +192,58 @@
     <!-- Problem & Solution Section -->
     <section class="bg-surface-dim py-xl px-container-margin">
         <div class="max-w-5xl mx-auto flex flex-col gap-lg text-center">
-            <h2 class="font-h1 text-h1 text-on-background" style="">Generic AI tools do not understand TwinCAT 3 projects
+            <h2 class="font-h1 text-h1 text-on-background" style="">Generic AI tools do not understand TwinCAT projects
             </h2>
             <p class="font-body-lg text-body-lg text-on-surface-variant max-w-3xl mx-auto" style="">Standard LLMs lack
                 context for industrial automation structures. They struggle with POUs, Function Blocks, and the specific
                 syntax of Structured Text within a Beckhoff environment.</p>
             <div
                 class="text-on-primary p-lg rounded mt-md mx-auto max-w-2xl border border-primary-container shadow-[0px_4px_0px_rgba(0,0,0,0.1)] bg-[#CE142B]">
-                <h3 class="font-h2 text-h2 mb-sm" style="">A structured bridge between coding agents and TwinCAT 3</h3>
+                <h3 class="font-h2 text-h2 mb-sm" style="">A structured bridge between coding agents and TwinCAT</h3>
                 <p class="font-body-md text-body-md opacity-90" style="">Our MCP server translates complex TwinCAT 3
                     project files into a semantic structure that modern AI agents can comprehend and safely manipulate.
                 </p>
             </div>
         </div>
     </section>
-    <section class="py-12 px-container-margin bg-white">
-        <div
-            class="max-w-4xl mx-auto border-2 border-dashed border-slate-300 rounded-xl flex flex-col items-center justify-center min-h-[300px] bg-slate-50">
-            <span class="material-symbols-outlined text-slate-400 text-5xl mb-4">play_circle</span>
-            <p class="text-slate-500 font-medium">[Placeholder for agent demonstration GIF]</p>
-            <p class="text-slate-400 text-sm">Inserisci lo spazio per una gif che mostra brevi sequenze di funzionamento
-                dell'agent</p>
+    <section class="py-24 px-container-margin bg-white" id="quick-start">
+        <div class="max-w-4xl mx-auto flex flex-col gap-xl">
+            <div class="text-center">
+                <h2 class="font-h1 text-h1 text-on-background mb-md" style="">Quick Start Installation</h2>
+                <p class="font-body-lg text-body-lg text-on-surface-variant" style="">The TwinCAT AI Agent is now available for direct installation on your favorite coding platforms.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-lg">
+                <!-- Claude Installation -->
+                <div class="flex flex-col gap-md h-full">
+                    <div class="flex items-center gap-sm">
+                        <span class="material-symbols-outlined text-primary" style="">bolt</span>
+                        <h3 class="font-h3 text-h3" style="">For Claude Code</h3>
+                    </div>
+                    <div class="bg-inverse-surface rounded-lg p-md overflow-hidden shadow-inner flex-grow">
+                        <div class="flex gap-xs mb-sm">
+                            <div class="w-2 h-2 rounded-full bg-error/40"></div>
+                            <div class="w-2 h-2 rounded-full bg-secondary/40"></div>
+                            <div class="w-2 h-2 rounded-full bg-surface-variant/40"></div>
+                        </div>
+                        <pre class="font-code text-code text-on-primary-container whitespace-pre-wrap break-all">claude plugin marketplace add ricciolo/TwinCAT-Agent &amp;&amp; claude plugin install twincat-agent@twincat-agent</pre>
+                    </div>
+                </div>
+                <!-- GitHub Copilot Installation -->
+                <div class="flex flex-col gap-md h-full">
+                    <div class="flex items-center gap-sm">
+                        <span class="material-symbols-outlined text-primary" style="">terminal</span>
+                        <h3 class="font-h3 text-h3" style="">For GitHub Copilot</h3>
+                    </div>
+                    <div class="bg-inverse-surface rounded-lg p-md overflow-hidden shadow-inner flex-grow">
+                        <div class="flex gap-xs mb-sm">
+                            <div class="w-2 h-2 rounded-full bg-error/40"></div>
+                            <div class="w-2 h-2 rounded-full bg-secondary/40"></div>
+                            <div class="w-2 h-2 rounded-full bg-surface-variant/40"></div>
+                        </div>
+                        <pre class="font-code text-code text-on-primary-container whitespace-pre-wrap break-all">copilot plugin install ricciolo/TwinCAT-Agent</pre>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
     <!-- Features Bento Grid -->
@@ -229,36 +273,27 @@
                 <div class="h-1 w-full absolute top-0 left-0 bg-[#CE142B]"></div>
                 <span class="material-symbols-outlined text-primary-container text-3xl mb-xs"
                     style='font-variation-settings: "FILL" 1;'>explore</span>
-                <h3 class="font-h3 text-h3 text-on-background" style="">Navigate TwinCAT 3 projects faster</h3>
+                <h3 class="font-h3 text-h3 text-on-background" style="">Navigate TwinCAT projects faster</h3>
                 <p class="font-body-sm text-body-sm text-on-surface-variant" style="">Quickly locate variables,
                     references, and dependencies across large codebases.</p>
             </div>
-            <div
-                class="bg-surface border border-outline-variant p-lg rounded flex flex-col gap-sm shadow-sm relative overflow-hidden">
+            <div class="bg-surface border border-outline-variant p-lg rounded flex flex-col gap-sm shadow-sm relative overflow-hidden">
                 <div class="h-1 w-full absolute top-0 left-0 bg-[#CE142B]"></div>
-                <span class="material-symbols-outlined text-primary-container text-3xl mb-xs"
-                    style='font-variation-settings: "FILL" 1;'>history</span>
-                <h3 class="font-h3 text-h3 text-on-background" style="">Support legacy projects</h3>
-                <p class="font-body-sm text-body-sm text-on-surface-variant" style="">Bring modern AI capabilities to
-                    older TwinCAT 3 implementations.</p>
+                <span class="material-symbols-outlined text-primary-container text-3xl mb-xs" style='font-variation-settings: "FILL" 1;'>history</span>
+                <h3 class="font-h3 text-h3 text-on-background">Support legacy projects</h3>
+                <p class="font-body-sm text-body-sm text-on-surface-variant">Bring modern AI capabilities to older TwinCAT 3 implementations.</p>
             </div>
-            <div
-                class="bg-surface border border-outline-variant p-lg rounded flex flex-col gap-sm shadow-sm relative overflow-hidden">
+            <div class="bg-surface border border-outline-variant p-lg rounded flex flex-col gap-sm shadow-sm relative overflow-hidden">
                 <div class="h-1 w-full absolute top-0 left-0 bg-[#CE142B]"></div>
-                <span class="material-symbols-outlined text-primary-container text-3xl mb-xs"
-                    style='font-variation-settings: "FILL" 1;'>rule</span>
-                <h3 class="font-h3 text-h3 text-on-background" style="">Standardize team output</h3>
-                <p class="font-body-sm text-body-sm text-on-surface-variant" style="">Enforce coding guidelines and
-                    naming conventions automatically.</p>
+                <span class="material-symbols-outlined text-primary-container text-3xl mb-xs" style='font-variation-settings: "FILL" 1;'>rule</span>
+                <h3 class="font-h3 text-h3 text-on-background">Standardize team output</h3>
+                <p class="font-body-sm text-body-sm text-on-surface-variant">Enforce coding guidelines and naming conventions automatically.</p>
             </div>
-            <div
-                class="bg-surface border border-outline-variant p-lg rounded flex flex-col gap-sm shadow-sm relative overflow-hidden">
+            <div class="bg-surface border border-outline-variant p-lg rounded flex flex-col gap-sm shadow-sm relative overflow-hidden">
                 <div class="h-1 w-full absolute top-0 left-0 bg-[#CE142B]"></div>
-                <span class="material-symbols-outlined text-primary-container text-3xl mb-xs"
-                    style='font-variation-settings: "FILL" 1;'>settings</span>
-                <h3 class="font-h3 text-h3 text-on-background" style="">Keep engineers in control</h3>
-                <p class="font-body-sm text-body-sm text-on-surface-variant" style="">All AI suggestions require human
-                    review before compilation.</p>
+                <span class="material-symbols-outlined text-primary-container text-3xl mb-xs" style='font-variation-settings: "FILL" 1;'>settings</span>
+                <h3 class="font-h3 text-h3 text-on-background">Keep engineers in control</h3>
+                <p class="font-body-sm text-body-sm text-on-surface-variant">All AI suggestions require human review before compilation.</p>
             </div>
         </div>
     </section>

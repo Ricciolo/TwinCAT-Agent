@@ -1,6 +1,15 @@
 ---
 name: tc-troubleshooting
 description: Use this skill ONLY when the user reports a build error, a compilation warning, or when `CheckPlcSyntaxAsync` fails. It contains specific fixes for TwinCAT IL Errors (4200-4213) and explanations for standard Compiler Warnings (1502-1990).
+disallowedTools:
+  - edit
+  - write
+  - replace_string_in_file
+  - multi_replace_string_in_file
+  - create_file
+  - grep_search
+  - file_search
+  - list_dir
 ---
 
 # TwinCAT Troubleshooting — Compiler Errors & Warnings (Cap. 8, 9)

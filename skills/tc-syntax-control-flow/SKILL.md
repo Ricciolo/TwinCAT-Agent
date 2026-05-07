@@ -1,6 +1,15 @@
 ---
 name: tc-syntax-control-flow
 description: Use this skill to correctly format ST (Structured Text) logic, operators, and control flow statements. It includes precedence rules, IF/CASE/FOR/WHILE loops syntax, mathematical/bitwise operator rules (MOD, SHL, ADR, BITADR), and the list of reserved IEC keywords.
+disallowedTools:
+  - edit
+  - write
+  - replace_string_in_file
+  - multi_replace_string_in_file
+  - create_file
+  - grep_search
+  - file_search
+  - list_dir
 ---
 
 # TwinCAT Syntax & Control Flow (Cap. 3, 4, 15)

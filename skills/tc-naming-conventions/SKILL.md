@@ -1,6 +1,15 @@
 ---
 name: tc-naming-conventions
 description: Use this skill ALWAYS before generating or modifying the names of any variables, Function Blocks (FB), Data Types (DUT), Functions, Methods, Properties, or Interfaces. It contains the mandatory Beckhoff Hungarian notation rules, prefixes (b, n, f, st, fb, etc.), and shading/name resolution rules to avoid conflicts.
+disallowedTools:
+  - edit
+  - write
+  - replace_string_in_file
+  - multi_replace_string_in_file
+  - create_file
+  - grep_search
+  - file_search
+  - list_dir
 ---
 
 # TwinCAT Naming Conventions (Cap. 1, 14)

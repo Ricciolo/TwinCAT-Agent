@@ -1,6 +1,15 @@
 ---
 name: tc-advanced-patterns
 description: Use this skill when implementing advanced TwinCAT 3 (ExST) features. It covers Properties (GET/SET), Methods, initialization lifecycles (FB_init, FB_reinit, FB_exit), State Machine patterns, pragmas (attributes, conditional compiling, regions, message output), and PlcTaskSystemInfo access.
+disallowedTools:
+  - edit
+  - write
+  - replace_string_in_file
+  - multi_replace_string_in_file
+  - create_file
+  - grep_search
+  - file_search
+  - list_dir
 ---
 
 # TwinCAT Advanced Patterns (Cap. 10, 11, 12)

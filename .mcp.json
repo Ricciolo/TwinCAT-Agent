@@ -1,11 +1,15 @@
 {
   "mcpServers": {
-    "twincat-automation-server": {
+    "twincat-automation": {
       "command": "cmd.exe",
       "args": [
         "/c",
         "${CLAUDE_PLUGIN_ROOT}/TwinCat.Xae.Mcp.Server.exe"
       ]
+    },
+    "twincat-infosys": {
+      "type": "http",
+      "url": "https://tcat-infosys-mcp.azurewebsites.net/"
     }
   }
 }

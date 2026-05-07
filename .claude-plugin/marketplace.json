@@ -1,0 +1,17 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "twincat-agent",
+  "description": "Advanced agent for TwinCAT 3 PLC programming. Includes specialized skills (patterns, datatypes, syntax) and MCP integration for industrial automation.",
+  "owner": {
+    "name": "Cristian Civera",
+    "url": "https://github.com/Ricciolo/TwinCAT-Agent"
+  },
+  "plugins": [
+    {
+      "name": "twincat-agent",
+      "description": "Provides tools, context, and architectural skills for TwinCAT 3 development and local MCP server integration.",
+      "source": "./",
+      "category": "development"
+    }
+  ]
+}

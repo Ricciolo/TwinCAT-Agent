@@ -1,6 +1,15 @@
 ---
 name: tc-datatypes-memory
 description: Use this skill when the user asks about data types, arrays, structures (STRUCT), enumerations (ENUM), pointers (POINTER), references (REFERENCE), or dynamic memory allocation (NEW/DELETE). It also contains critical rules for memory alignment (pack_mode) to minimize padding bytes.
+disallowedTools:
+  - edit
+  - write
+  - replace_string_in_file
+  - multi_replace_string_in_file
+  - create_file
+  - grep_search
+  - file_search
+  - list_dir
 ---
 
 # TwinCAT Data Types & Memory (Cap. 2, 13)
