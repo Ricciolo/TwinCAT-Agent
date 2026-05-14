@@ -1,24 +1,21 @@
 # TwinCAT-Agent
 
-TwinCAT-Agent is a plugin setup for using AI coding assistants as a TwinCAT-focused engineering assistant.
+Plugin setup to use AI coding assistants as a TwinCAT-focused engineering assistant.
 
-It combines:
+## In Brief
+
+TwinCAT-Agent provides:
 
 - a dedicated `twincat` agent
 - TwinCAT-specific skills and operating rules
 - a local MCP server for TwinCAT XAE engineering automation
 - a remote MCP server for Beckhoff InfoSys search and symbol lookup
 
-At a high level, it can automate TwinCAT XAE engineering actions on Windows (via a local MCP server), search Beckhoff InfoSys documentation and symbols (via a remote MCP server), and enforce a safer TwinCAT workflow than a generic assistant (naming conventions, PLC-aware operations, syntax checks, and a safe activation/login sequence).
+In practice, it can automate TwinCAT XAE engineering actions on Windows (via a local MCP server), search Beckhoff InfoSys documentation and symbols (via a remote MCP server), and enforce a safer TwinCAT workflow than a generic assistant (naming conventions, PLC-aware operations, syntax checks, and a safe activation/login sequence).
 
-Jump to:
+**Jump to**: [✅ Requirements](#requirements) | [🧩 Install with Claude Code](#install-with-claude-code) | [🧩 Install with GitHub Copilot CLI](#install-with-github-copilot-cli) | [🚀 Quickstart](#quickstart)
 
-- [Requirements](#requirements)
-- [Install with Claude Code](#install-with-claude-code)
-- [Install with GitHub Copilot CLI](#install-with-github-copilot-cli)
-- [Quickstart](#quickstart)
-
-## Who This Is For
+## 👷 Who This Is For
 
 This repository is intended for developers and automation engineers working with:
 
@@ -27,14 +24,14 @@ This repository is intended for developers and automation engineers working with
 - PLC project maintenance and refactoring
 - PLC-aware code generation, review, and troubleshooting
 
-## Requirements
+## ✅ Requirements
 
 - Windows x64
 - TwinCAT 3.1 Build 4026 or later
 - TwinCAT XAE Shell 64-bit
 - GitHub Copilot CLI or Claude Code
 
-## Install with Claude Code
+## 🧩 Install with Claude Code
 
 Start Claude Code:
 
@@ -67,7 +64,7 @@ Select the TwinCAT agent:
 twincat
 ```
 
-## Install with GitHub Copilot CLI
+## 🧩 Install with GitHub Copilot CLI
 
 Add this GitHub repo as a marketplace:
 
@@ -100,9 +97,9 @@ Enable unrestricted approvals (recommended to avoid repeated prompts):
 /allow-all on
 ```
 
-## Quickstart
+## 🚀 Quickstart
 
-After the plugin is installed, the working flow should be the same regardless of which supported assistant you use.
+After the plugin is installed, the working flow is the same regardless of which supported assistant you use.
 
 Open a terminal in the folder that contains the target `.plcproj`:
 
