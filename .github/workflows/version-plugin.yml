@@ -36,11 +36,15 @@ jobs:
           jq --arg v "${{ steps.version.outputs.new_version }}" '.version = $v' \
             .claude-plugin/plugin.json > tmp.json && mv tmp.json .claude-plugin/plugin.json
 
+      - name: Update README version badge
+        run: |
+          sed -i 's|version-[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*-blue|version-${{ steps.version.outputs.new_version }}-blue|g' README.md
+
       - name: Commit and push
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add .claude-plugin/plugin.json
+          git add .claude-plugin/plugin.json README.md
           git diff --cached --quiet && echo "No changes to commit" && exit 0
           git commit -m "chore: bump plugin.json to ${{ steps.version.outputs.new_version }} [skip ci]"
           git push
