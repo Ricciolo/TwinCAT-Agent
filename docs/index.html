@@ -143,9 +143,9 @@
                 Agent</div>
             <div
                 class="hidden md:flex items-center gap-gutter font-sans tracking-tight antialiased text-sm font-semibold">
-                <a class="text-slate-600 dark:text-slate-400 hover:text-red-700 dark:hover:text-red-500 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors duration-200 active:opacity-80 transition-opacity" href="#how-it-works" style="">How it Works</a>
-                <a class="text-slate-600 dark:text-slate-400 hover:text-red-700 dark:hover:text-red-500 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors duration-200 active:opacity-80 transition-opacity" href="#security" style="">Security</a>
-                <a class="text-slate-600 dark:text-slate-400 hover:text-red-700 dark:hover:text-red-500 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors duration-200 active:opacity-80 transition-opacity" href="#safety" style="">Safety</a>
+                <a class="text-slate-600 dark:text-slate-400 hover:text-red-700 dark:hover:text-red-500 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors duration-200 active:opacity-80 transition-opacity" href="#quick-start" style="">Quick Start</a>
+                <a class="text-slate-600 dark:text-slate-400 hover:text-red-700 dark:hover:text-red-500 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors duration-200 active:opacity-80 transition-opacity" href="#features" style="">Engineering Capabilities</a>
+                <a class="text-slate-600 dark:text-slate-400 hover:text-red-700 dark:hover:text-red-500 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors duration-200 active:opacity-80 transition-opacity" href="https://github.com/Ricciolo/TwinCAT-Agent" rel="noopener noreferrer" target="_blank" style="">GitHub</a>
             </div>
             <div>
                 <a class="text-on-primary px-md py-sm rounded font-label-md text-label-md hover:opacity-90 focus:ring-2 focus:ring-secondary focus:outline-none transition-opacity bg-[#CE142B]" href="#quick-start" style="">Install Now</a>
@@ -209,8 +209,8 @@
     <section class="py-24 px-container-margin bg-white" id="quick-start">
         <div class="max-w-4xl mx-auto flex flex-col gap-xl">
             <div class="text-center">
-                <h2 class="font-h1 text-h1 text-on-background mb-md" style="">Quick Start Installation</h2>
-                <p class="font-body-lg text-body-lg text-on-surface-variant" style="">The TwinCAT AI Agent is now available for direct installation on your favorite coding platforms.</p>
+                    <h2 class="font-h1 text-h1 text-on-background mb-md" style="">Quick Start</h2>
+                    <p class="font-body-lg text-body-lg text-on-surface-variant" style="">Install the plugin, then select the <span class="font-semibold">twincat</span> agent.</p>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-lg">
                 <!-- Claude Installation -->
@@ -225,14 +225,19 @@
                             <div class="w-2 h-2 rounded-full bg-secondary/40"></div>
                             <div class="w-2 h-2 rounded-full bg-surface-variant/40"></div>
                         </div>
-                        <pre class="font-code text-code text-on-primary-container whitespace-pre-wrap break-all">claude plugin marketplace add ricciolo/TwinCAT-Agent &amp;&amp; claude plugin install twincat-agent@twincat-agent</pre>
+                            <pre class="font-code text-code text-on-primary-container whitespace-pre-wrap break-all">
+claude
+
+/plugin marketplace add ricciolo/TwinCAT-Agent
+/plugin install twincat@twincat-plugins
+/agents</pre>
                     </div>
                 </div>
                 <!-- GitHub Copilot Installation -->
                 <div class="flex flex-col gap-md h-full">
                     <div class="flex items-center gap-sm">
                         <span class="material-symbols-outlined text-primary" style="">terminal</span>
-                        <h3 class="font-h3 text-h3" style="">For GitHub Copilot</h3>
+                        <h3 class="font-h3 text-h3" style="">For GitHub Copilot CLI</h3>
                     </div>
                     <div class="bg-inverse-surface rounded-lg p-md overflow-hidden shadow-inner flex-grow">
                         <div class="flex gap-xs mb-sm">
@@ -240,7 +245,13 @@
                             <div class="w-2 h-2 rounded-full bg-secondary/40"></div>
                             <div class="w-2 h-2 rounded-full bg-surface-variant/40"></div>
                         </div>
-                        <pre class="font-code text-code text-on-primary-container whitespace-pre-wrap break-all">copilot plugin install ricciolo/TwinCAT-Agent</pre>
+                            <pre class="font-code text-code text-on-primary-container whitespace-pre-wrap break-all">
+copilot plugin marketplace add ricciolo/TwinCAT-Agent
+copilot plugin install ricciolo/TwinCAT-Agent
+
+copilot
+/agent
+/allow-all on</pre>
                     </div>
                 </div>
             </div>
@@ -304,14 +315,10 @@
             <div class="text-lg font-bold text-slate-900 dark:text-slate-100" style="">TwinCAT AI Agent</div>
             <div
                 class="font-sans text-xs uppercase tracking-widest text-slate-500 dark:text-slate-400 flex flex-wrap justify-center gap-md">
-                <a class="hover:text-[#CE142B] dark:hover:text-[#CE142B] underline decoration-2 cursor-pointer transition-all text-[#CE142B] font-bold"
-                    href="#" style="">Product Information</a>
                 <a class="hover:text-red-700 dark:hover:text-red-500 underline decoration-2 cursor-pointer transition-all"
-                    href="#" style="">Legal Notes</a>
+                    href="https://github.com/Ricciolo/TwinCAT-Agent" rel="noopener noreferrer" target="_blank" style="">GitHub</a>
                 <a class="hover:text-red-700 dark:hover:text-red-500 underline decoration-2 cursor-pointer transition-all"
-                    href="#" style="">Privacy Policy</a>
-                <a class="hover:text-red-700 dark:hover:text-red-500 underline decoration-2 cursor-pointer transition-all"
-                    href="#" style="">Imprint</a>
+                    href="https://polyformproject.org/licenses/noncommercial/1.0.0" rel="noopener noreferrer" target="_blank" style="">License</a>
             </div>
             <div class="text-xs text-slate-500" style="">
                 © 2026 Cristian Civera. All rights reserved.
