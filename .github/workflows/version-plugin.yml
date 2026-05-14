@@ -1,0 +1,46 @@
+name: Version plugin.json
+
+on:
+  push:
+    paths:
+      - 'TwinCat.Xae.Mcp.Server.exe'
+    branches:
+      - '**'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  bump-version:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Compute next patch version
+        id: version
+        run: |
+          CURRENT=$(jq -r '.version' .claude-plugin/plugin.json)
+          MAJOR=$(echo "$CURRENT" | cut -d. -f1)
+          MINOR=$(echo "$CURRENT" | cut -d. -f2)
+          # Use total commit count as patch to guarantee monotonic increase
+          PATCH=$(git rev-list --count HEAD)
+          NEW_VERSION="${MAJOR}.${MINOR}.${PATCH}"
+          echo "new_version=$NEW_VERSION" >> "$GITHUB_OUTPUT"
+
+      - name: Update plugin.json version
+        run: |
+          jq --arg v "${{ steps.version.outputs.new_version }}" '.version = $v' \
+            .claude-plugin/plugin.json > tmp.json && mv tmp.json .claude-plugin/plugin.json
+
+      - name: Commit and push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add .claude-plugin/plugin.json
+          git diff --cached --quiet && echo "No changes to commit" && exit 0
+          git commit -m "chore: bump plugin.json to ${{ steps.version.outputs.new_version }} [skip ci]"
+          git push

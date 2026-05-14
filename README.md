@@ -55,6 +55,12 @@ If Claude prompts you to apply plugin changes without restarting:
 /reload-plugins
 ```
 
+Update the TwinCAT plugin:
+
+```text
+/plugin update
+```
+
 Select the TwinCAT agent:
 
 ```text
