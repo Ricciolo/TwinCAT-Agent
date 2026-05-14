@@ -148,3 +148,9 @@ Create a state machine in the example MAIN program.
 ```
 
 From there, the `twincat` agent should resolve the project, initialize TwinCAT automation, inspect the PLC tree, and work through the change using the configured TwinCAT rules.
+
+## License
+This project is licensed under the [PolyForm Noncommercial License 1.0.0](LICENSE).
+
+You are free to use, modify, and distribute this software for personal, academic, and non-commercial purposes (e.g., hobby projects, personal study, testing, and open-source research). 
+For commercial usage (e.g. consulting, integration into paid industrial projects, or enterprise environments), a commercial license is required. Please contact me directly to discuss commercial licensing options.
