@@ -1,6 +1,4 @@
-# TwinCAT-Agent
-
-Plugin setup to use AI coding assistants as a TwinCAT-focused engineering assistant.
+TwinCAT coding agent for Beckhoff PLC development, with strict rules for Structured Text, naming conventions, PLC-aware tooling, syntax checks, and safe project validation workflows.
 
 ## In Brief
 
