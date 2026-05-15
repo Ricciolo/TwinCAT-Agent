@@ -1,6 +1,6 @@
 {
   "name": "twincat-mcp-agent",
-  "version": "1.0.29",
+  "version": "1.0.31",
   "description": "TwinCAT ST Master - Expert in Beckhoff IEC 61131-3 ExST development",
   "author": {
     "name": "Cristian Civera",
