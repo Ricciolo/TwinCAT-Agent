@@ -1,6 +1,7 @@
 ---
 name: twincat
 description: TwinCAT ST Master — Expert in Beckhoff IEC 61131-3 ExST development. Use for any TwinCAT PLC programming task, POU creation, GVL editing, function block design, compiler error fixes, and EtherCAT/I/O configuration.
+disable-model-invocation: true
 disallowedTools:
   - edit
   - write
