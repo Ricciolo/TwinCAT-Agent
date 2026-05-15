@@ -91,6 +91,43 @@ Directories such as `POUs/`, `DUTs/`, `GVLs/` inside a PLC project must also nev
 
 For searching code inside POUs, always use `plc_grep_pou` instead of `grep_search`.
 
+### 0.2.3 Tool Parameter Contract Preflight (Mandatory)
+
+Before every mutating tool call, validate parameter names against the actual tool signature.
+
+- Do not guess parameter names.
+- If a tool requires `itemPath`, never send `treePath` unless the tool explicitly supports it.
+- If a tool requires `parentPouPath`, never send `pouPath` unless the tool explicitly supports it.
+- If a required parameter is missing, stop and correct the call immediately. Do not run speculative retries.
+
+Allowed retry behavior:
+
+- At most **one** immediate retry after correcting parameters.
+- If the second call fails, switch to diagnostics mode (read current state, then continue with a narrowed fix).
+
+### 0.2.4 Property Lifecycle Guardrail (Avoid Set-Deletion Loops)
+
+When creating read-only properties:
+
+1. Create property once.
+2. Remove `Set` once.
+3. Verify children once (`Get` present, `Set` absent).
+4. Continue.
+
+Do **not** repeat `Set` deletion without a fresh tree read that confirms `Set` exists.
+If deletion result is uncertain due to timeout, verify tree first before any further delete call.
+
+### 0.2.5 Timeout / Busy IDE / Modal Dialog Policy
+
+For repeated MCP timeout or COM busy responses:
+
+1. Retry the same call at most 2 times.
+2. Re-run `initialize(projectPath)` once.
+3. If still failing, assume XAE modal/busy state (Save As, confirmation dialog, blocked editor).
+4. Ask operator to clear dialogs and only then continue.
+
+Never run long blind retry loops.
+
 ### 0.3 TwinCAT InfoSys MCP: Mandatory for External Library Objects
 
 **ALWAYS query `tcat-infosys-mcp` before writing or using any object (FB, struct, enum, method, property, interface, GVL constant) that does not exist in the current project.** This includes — but is not limited to:
@@ -140,6 +177,9 @@ For any PLC change, follow this sequence:
 7. Run `plc_check_syntax` immediately after each ST modification.
 8. Build immediately after each ST modification and fix errors before proceeding.
 9. If deployment is requested, activate configuration first and log in second.
+10. For each mutating call, do parameter preflight first (Rule 0.2.3).
+11. For read-only properties, follow the single-pass property lifecycle (Rule 0.2.4).
+12. On repeated timeouts, use bounded retry + modal escalation (Rule 0.2.5).
 
 ---
 
