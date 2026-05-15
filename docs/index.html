@@ -378,6 +378,129 @@ copilot
             </div>
         </div>
     </section>
+    <!-- Demo -->
+    <section class="py-24 px-container-margin bg-surface-dim" id="demo">
+        <div class="max-w-3xl mx-auto">
+            <div class="text-center mb-xl">
+                <h2 class="font-h1 text-h1 text-on-background mb-md">Book a demo</h2>
+                <p class="font-body-lg text-body-lg text-on-surface-variant">Leave your email and a short note. We'll reply with available slots.</p>
+            </div>
+
+            <form class="bg-surface border border-outline-variant rounded-lg p-lg shadow-sm grid gap-md" id="demo-form"
+                action="https://api.slapform.com/xKnBk6pxd" method="POST" novalidate>
+
+                <!-- Honeypot: keep hidden; bots tend to fill it -->
+                <div class="hidden" aria-hidden="true">
+                    <label class="block font-label-md text-label-md text-on-surface-variant" for="website">Website</label>
+                    <input id="website" name="honeypot" type="text" tabindex="-1" autocomplete="off" />
+                </div>
+
+                <div class="grid gap-xs">
+                    <label class="block font-label-md text-label-md text-on-surface-variant" for="email">Email</label>
+                    <input
+                        class="w-full rounded border border-outline-variant bg-white px-md py-sm text-on-background placeholder:text-on-surface-variant/70 focus:border-secondary focus:ring-secondary"
+                        id="email" name="email" type="email" autocomplete="email" required
+                        placeholder="name@company.com" />
+                </div>
+
+                <div class="grid gap-xs">
+                    <label class="block font-label-md text-label-md text-on-surface-variant" for="message">Note (optional)</label>
+                    <textarea
+                        class="w-full min-h-[120px] rounded border border-outline-variant bg-white px-md py-sm text-on-background placeholder:text-on-surface-variant/70 focus:border-secondary focus:ring-secondary"
+                        id="message" name="message" rows="5" maxlength="2000"
+                        placeholder="What are you building with TwinCAT? Any constraints (version, timeline, team size)?"></textarea>
+                </div>
+
+                <p id="demo-form-status" class="hidden text-body-sm" role="status" aria-live="polite"></p>
+
+                <div class="flex flex-col sm:flex-row gap-md items-stretch sm:items-center sm:justify-between">
+                    <p class="text-body-sm text-on-surface-variant">No spam. We only use your email to reply.</p>
+                    <button
+                        class="text-on-primary px-lg py-md rounded font-label-md text-label-md hover:opacity-90 focus:ring-2 focus:ring-secondary focus:outline-none transition-opacity bg-[#CE142B]"
+                        type="submit" id="demo-form-submit">Request demo</button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <script>
+        (function () {
+            const form = document.getElementById('demo-form');
+            if (!form) return;
+
+            const submitButton = document.getElementById('demo-form-submit');
+            const statusEl = document.getElementById('demo-form-status');
+            const emailEl = document.getElementById('email');
+            const messageEl = document.getElementById('message');
+            const honeypotEl = document.getElementById('website');
+
+            function setStatus(kind, text) {
+                if (!statusEl) return;
+                statusEl.classList.remove('hidden');
+                statusEl.classList.remove('text-green-800', 'text-red-800', 'text-on-surface-variant');
+                statusEl.classList.add(kind === 'success' ? 'text-green-800' : kind === 'error' ? 'text-red-800' : 'text-on-surface-variant');
+                statusEl.textContent = text;
+            }
+
+            function setBusy(isBusy) {
+                if (!submitButton) return;
+                submitButton.disabled = isBusy;
+                submitButton.classList.toggle('opacity-60', isBusy);
+                submitButton.classList.toggle('cursor-not-allowed', isBusy);
+                submitButton.textContent = isBusy ? 'Sending…' : 'Request demo';
+            }
+
+            form.addEventListener('submit', async (e) => {
+                e.preventDefault();
+
+                const email = (emailEl?.value || '').trim();
+                const message = (messageEl?.value || '').trim();
+                const honeypot = (honeypotEl?.value || '').trim();
+
+                if (!email) {
+                    setStatus('error', 'Please enter your email.');
+                    emailEl?.focus();
+                    return;
+                }
+
+                // If the honeypot is filled, silently pretend success.
+                if (honeypot) {
+                    form.reset();
+                    setStatus('success', 'Thanks. We will get back to you soon.');
+                    return;
+                }
+
+                setBusy(true);
+                setStatus('info', 'Sending your request…');
+
+                try {
+                    const res = await fetch(form.action, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            name: 'Demo request',
+                            email,
+                            message
+                        })
+                    });
+
+                    if (!res.ok) {
+                        throw new Error('Request failed');
+                    }
+
+                    // Slapform may return JSON or empty body depending on plan/config.
+                    try { await res.json(); } catch { /* ignore */ }
+
+                    form.reset();
+                    setStatus('success', 'Request sent. We will reply soon with available slots.');
+                } catch (err) {
+                    setStatus('error', 'Sorry, something went wrong. Please try again in a moment.');
+                } finally {
+                    setBusy(false);
+                }
+            });
+        })();
+    </script>
     <!-- Footer -->
     <footer class="bg-slate-50 dark:bg-slate-950 border-t border-slate-200 dark:border-slate-800">
         <div
