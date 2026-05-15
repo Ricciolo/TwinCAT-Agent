@@ -157,6 +157,19 @@ Create a state machine in the example MAIN program.
 
 From there, the `twincat` agent should resolve the project, initialize TwinCAT automation, inspect the PLC tree, and work through the change using the configured TwinCAT rules.
 
+## 📚 Standalone Beckhoff InfoSys MCP
+
+The Beckhoff InfoSys MCP server can also be used independently, without installing the rest of this repository.
+
+- https://twincat-infosys-mcp.cristiancivera.com/
+
+Available tools include:
+
+- `infosys_get_page`: returns a documentation page rendered as clean Markdown
+- `infosys_search`: searches across indexed Beckhoff InfoSys documentation pages
+- `infosys_search_symbols`: searches IEC symbols such as function blocks, functions, structs, enums, and interfaces
+- `infosys_search_code`: searches Structured Text examples, variable names, and code fragments inside the documentation
+
 ## License
 This project is licensed under the [PolyForm Noncommercial License 1.0.0](LICENSE).
 

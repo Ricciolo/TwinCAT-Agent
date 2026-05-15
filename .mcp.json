@@ -9,7 +9,7 @@
     },
     "twincat-infosys": {
       "type": "http",
-      "url": "https://tcat-infosys-mcp.azurewebsites.net/"
+      "url": "https://twincat-infosys-mcp.cristiancivera.com/"
     }
   }
 }
