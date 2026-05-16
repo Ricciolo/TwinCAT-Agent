@@ -1,4 +1,4 @@
-![Version](https://img.shields.io/badge/version-1.0.35-blue)
+![Version](https://img.shields.io/badge/version-2026.05.16-blue)
 
 TwinCAT coding agent for Beckhoff PLC development, with strict rules for Structured Text, naming conventions, PLC-aware tooling, syntax checks, and safe project validation workflows.
 
