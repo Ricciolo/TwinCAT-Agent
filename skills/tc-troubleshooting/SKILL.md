@@ -154,15 +154,17 @@ disallowedTools:
 
 ## Diagnostic Workflow
 
-1. **Build** the project (`SessionBuild` / `CheckPlcSyntaxAsync`).
-2. Read the **Error List** — fix errors **top-down** (later errors are often cascades of the first).
-3. For each error code: look it up in the tables above, identify the offending POU/line, apply the indicated fix.
-4. **Rebuild** after each fix — never batch multiple speculative fixes.
-5. **Never login** to a PLC with unresolved errors (rule 0.5 in the master agent).
+1. Run **`plc_check_syntax`** first for immediate syntax feedback, then run **`session_build`**.
+2. Treat **`session_build`** as the source of truth for the current project state: `plc_check_syntax` can still report stale errors until a new build refreshes the diagnostics.
+3. Read the **Error List** — fix errors **top-down** (later errors are often cascades of the first).
+4. For each error code: look it up in the tables above, identify the offending POU/line, apply the indicated fix.
+5. Run **`session_build`** again after each fix — never batch multiple speculative fixes.
+6. **Never login** to a PLC with unresolved errors (rule 0.5 in the master agent).
 
 ## Common Pitfalls
 
 - **Cascade errors**: a single missing `END_VAR` (3782) can produce dozens of subsequent errors — fix the first one and rebuild.
+- **Stale syntax diagnostics**: if `plc_check_syntax` still shows old errors after a fix, run `session_build` before trusting the result list.
 - **Type mismatch in batch edits**: when refactoring data types, use `plc_grep_pou` to find ALL references before editing.
 - **Online change blocked**: warning 1302 means new external references — perform a full download instead.
 - **Retain memory exhausted (3802)**: an FB instance with even one `VAR RETAIN` member places the entire instance in retain area; split into separate FBs.

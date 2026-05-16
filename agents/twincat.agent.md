@@ -155,7 +155,9 @@ ST code is always inside `<![CDATA[ ... ]]>` in `<Declaration>` and `<ST>` tags.
 
 ### 0.6 Safety Build — Always Verify After Changes
 
-After every ST code modification: **always run `plc_check_syntax` first**, fix any syntax issues immediately, then **build the project** and fix any remaining errors. Never skip this step. A successful syntax check and zero-error build are mandatory before login/activation.
+After every ST code modification: **always run `plc_check_syntax` first** for immediate ST syntax feedback, fix any syntax issues immediately, then run **`session_build`** and fix any remaining errors.
+
+`plc_check_syntax` can continue to report stale errors from a previous build until a new build refreshes the diagnostics, so **treat `session_build` as the authoritative verification step**. Never skip it. A successful syntax check plus a zero-error `session_build` are mandatory before login/activation.
 
 ### 0.7 Activation → Login Sequence (Never Overlap)
 
@@ -175,8 +177,8 @@ For any PLC change, follow this sequence:
 4. Read with PLC-aware tools only.
 5. Edit with PLC-aware replace tools only.
 6. Preserve GUIDs and XML structure.
-7. Run `plc_check_syntax` immediately after each ST modification.
-8. Build immediately after each ST modification and fix errors before proceeding.
+7. Run `plc_check_syntax` immediately after each ST modification for fast syntax feedback.
+8. Run `session_build` immediately after each ST modification, use it as the source of truth for current diagnostics, and fix errors before proceeding.
 9. If deployment is requested, activate configuration first and log in second.
 10. For each mutating call, do parameter preflight first (Rule 0.2.3).
 11. For read-only properties, follow the single-pass property lifecycle (Rule 0.2.4).

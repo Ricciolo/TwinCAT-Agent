@@ -4,6 +4,9 @@ on:
   push:
     paths:
       - 'TwinCat.Xae.Mcp.Server.exe'
+      - '.mcp.json'
+      - 'agents/**'
+      - 'skills/**'
     branches:
       - '**'
   workflow_dispatch:
@@ -13,38 +16,47 @@ permissions:
 
 jobs:
   bump-version:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
-      - name: Compute next patch version
+      - name: Read version from exe
         id: version
+        shell: pwsh
         run: |
-          CURRENT=$(jq -r '.version' .claude-plugin/plugin.json)
-          MAJOR=$(echo "$CURRENT" | cut -d. -f1)
-          MINOR=$(echo "$CURRENT" | cut -d. -f2)
-          # Use total commit count as patch to guarantee monotonic increase
-          PATCH=$(git rev-list --count HEAD)
-          NEW_VERSION="${MAJOR}.${MINOR}.${PATCH}"
-          echo "new_version=$NEW_VERSION" >> "$GITHUB_OUTPUT"
+          $ver = [System.Diagnostics.FileVersionInfo]::GetVersionInfo('TwinCat.Xae.Mcp.Server.exe').ProductVersion
+          # Strip git informational suffix (+<hash>) if present
+          $ver = $ver -replace '\+.*$', ''
+          if (-not $ver) { Write-Error "Could not read ProductVersion from exe"; exit 1 }
+          "new_version=$ver" | Out-File -FilePath $env:GITHUB_OUTPUT -Append
 
       - name: Update plugin.json version
+        shell: pwsh
         run: |
-          jq --arg v "${{ steps.version.outputs.new_version }}" '.version = $v' \
-            .claude-plugin/plugin.json > tmp.json && mv tmp.json .claude-plugin/plugin.json
+          $v = "${{ steps.version.outputs.new_version }}"
+          $json = Get-Content .claude-plugin/plugin.json -Raw | ConvertFrom-Json
+          $json.version = $v
+          $json | ConvertTo-Json -Depth 10 | Set-Content .claude-plugin/plugin.json
 
       - name: Update README version badge
+        shell: pwsh
         run: |
-          sed -i 's|version-[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*-blue|version-${{ steps.version.outputs.new_version }}-blue|g' README.md
+          $v = "${{ steps.version.outputs.new_version }}"
+          (Get-Content README.md) -replace 'version-\d+\.\d+\.\d+-blue', "version-$v-blue" |
+            Set-Content README.md
 
       - name: Commit and push
+        shell: pwsh
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add .claude-plugin/plugin.json README.md
-          git diff --cached --quiet && echo "No changes to commit" && exit 0
+          $changed = git diff --cached --quiet; if ($LASTEXITCODE -eq 0) {
+            Write-Host "No changes to commit"
+            exit 0
+          }
           git commit -m "chore: bump plugin.json to ${{ steps.version.outputs.new_version }} [skip ci]"
           git push
