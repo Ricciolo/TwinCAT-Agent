@@ -13,7 +13,7 @@ TwinCAT-Agent provides:
 
 In practice, it can automate TwinCAT XAE engineering actions on Windows (via a local MCP server), search Beckhoff InfoSys documentation and symbols (via a remote MCP server), and enforce a safer TwinCAT workflow than a generic assistant (naming conventions, PLC-aware operations, syntax checks, and a safe activation/login sequence).
 
-**Jump to**: [✅ Requirements](#requirements) | [🧩 Install with Claude Code](#install-with-claude-code) | [🧩 Install with GitHub Copilot CLI](#install-with-github-copilot-cli) | [🚀 Quickstart](#quickstart)
+**Jump to**: [✅ Requirements](#-requirements) | [🧩 Install with Claude Code](#-install-with-claude-code) | [🧩 Install with GitHub Copilot CLI](#-install-with-github-copilot-cli) | [🚀 Quickstart](#-quickstart)
 
 ## 👷 Who This Is For
 
