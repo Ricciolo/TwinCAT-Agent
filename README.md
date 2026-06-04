@@ -42,7 +42,7 @@ claude
 Add this GitHub repo as a marketplace:
 
 ```text
-/plugin marketplace add ricciolo/TwinCAT-Agent
+/plugin marketplace add TechIndustryX/twincat-agent
 ```
 
 Install the TwinCAT plugin from that marketplace:
@@ -75,13 +75,13 @@ twincat
 Add this GitHub repo as a marketplace:
 
 ```bash
-copilot plugin marketplace add ricciolo/TwinCAT-Agent
+copilot plugin marketplace add TechIndustryX/twincat-agent
 ```
 
 Install the plugin:
 
 ```bash
-copilot plugin install ricciolo/TwinCAT-Agent
+copilot plugin install TechIndustryX/twincat-agent
 ```
 
 Start Copilot CLI:

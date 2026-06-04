@@ -4,7 +4,7 @@
   "description": "Marketplace entry for TwinCAT development tools, skills, and engineering integrations.",
   "owner": {
     "name": "Cristian Civera",
-    "url": "https://github.com/Ricciolo/TwinCAT-Agent"
+    "url": "https://github.com/TechIndustryX/twincat-agent"
   },
   "plugins": [
     {
